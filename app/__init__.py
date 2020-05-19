@@ -1,0 +1,5 @@
+app = Flask(__name__)
+app.config.from_object("config")
+db = SQLAlchemy(app, use_native_unicode="utf8")
+bootstrap = Bootstrap(app)
+pagedown = PageDown(app)

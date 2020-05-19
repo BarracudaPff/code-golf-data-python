@@ -1,0 +1,2 @@
+from aem import *
+print(Application(findapp.byname("Finder")).event(b"coregetd", {b"----": app.property(b"home").elements(b"cobj").byfilter(its.property(b"pnam").beginswith("d").AND(its.property(b"pnam").ne("Documents")))}).send())

@@ -1,0 +1,4 @@
+class Migration(migrations.Migration):
+	initial = True
+	dependencies = [("downloads", "0001_initial")]
+	operations = [migrations.CreateModel(name="UpdateTrack", fields=[("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")), ("name", models.CharField(db_index=True, max_length=64)), ("version_name", models.CharField(max_length=64, null=True)), ("changelog_text", models.TextField()), ("version", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="update_tracks", to="downloads.DevVersion"))]), migrations.AlterUniqueTogether(name="updatetrack", unique_together={("name", "version")}), migrations.AlterIndexTogether(name="updatetrack", index_together={("name", "version")})]

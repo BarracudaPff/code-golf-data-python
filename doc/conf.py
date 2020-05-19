@@ -1,0 +1,16 @@
+extensions = ["sphinx.ext.intersphinx", "sphinx.ext.todo", "sphinx.ext.pngmath"]
+templates_path = ["_templates"]
+source_suffix = ".rst"
+master_doc = "index"
+project = u"ml-benchmarks"
+copyright = u"2011, Fabian Pedregosa"
+version = "0.1"
+release = "0.1"
+exclude_patterns = ["_build"]
+pygments_style = "sphinx"
+html_theme = "nature"
+html_static_path = ["_static"]
+htmlhelp_basename = "ml-benchmarksdoc"
+latex_documents = [("index", "ml-benchmarks.tex", u"ml-benchmarks Documentation", u"Fabian Pedregosa", "manual")]
+man_pages = [("index", "ml-benchmarks", u"ml-benchmarks Documentation", [u"Fabian Pedregosa"], 1)]
+intersphinx_mapping = {"http://docs.python.org/": None}

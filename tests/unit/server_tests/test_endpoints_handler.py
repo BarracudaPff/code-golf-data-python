@@ -1,0 +1,37 @@
+class TestEndpointsHandlerWithAuth(AsyncHTTPTestCase):
+	@classmethod
+	def setUpClass(cls):
+		cls.patcher = patch("tabpy.tabpy_server.app.app.TabPyApp._parse_cli_arguments", return_value=Namespace(config=None))
+		cls.patcher.start()
+		prefix = "__TestEndpointsHandlerWithAuth_"
+		cls.pwd_file = tempfile.NamedTemporaryFile(mode="w+t", prefix=prefix, suffix=".txt", delete=False)
+		username = "username"
+		password = "password"
+		cls.pwd_file.write(f"{username} {hash_password(username, password)}")
+		cls.pwd_file.close()
+		cls.state_dir = tempfile.mkdtemp(prefix=prefix)
+		cls.state_file = open(os.path.join(cls.state_dir, "state.ini"), "w+")
+		cls.state_file.write("[Service Info]\n" "Name = TabPy Serve\n" "Description = \n" "Creation Time = 0\n" "Access-Control-Allow-Origin = \n" "Access-Control-Allow-Headers = \n" "Access-Control-Allow-Methods = \n" "\n" "[Query Objects Service Versions]\n" "\n" "[Query Objects Docstrings]\n" "\n" "[Meta]\n" "Revision Number = 1\n")
+		cls.state_file.close()
+		cls.config_file = tempfile.NamedTemporaryFile(mode="w+t", prefix=prefix, suffix=".conf", delete=False)
+		cls.config_file.write("[TabPy]\n" f"TABPY_PWD_FILE = {cls.pwd_file.name}\n" f"TABPY_STATE_PATH = {cls.state_dir}")
+		cls.config_file.close()
+	@classmethod
+	def tearDownClass(cls):
+		cls.patcher.stop()
+		os.remove(cls.pwd_file.name)
+		os.remove(cls.state_file.name)
+		os.remove(cls.config_file.name)
+		os.rmdir(cls.state_dir)
+	def get_app(self):
+		self.app = TabPyApp(self.config_file.name)
+		return self.app._create_tornado_web_app()
+	def test_no_creds_required_auth_fails(self):
+		response = self.fetch("/endpoints")
+		self.assertEqual(401, response.code)
+	def test_invalid_creds_fails(self):
+		response = self.fetch("/endpoints", method="GET", headers={"Authorization": "Basic {}".format(base64.b64encode("user:wrong_password".encode("utf-8")).decode("utf-8"))})
+		self.assertEqual(401, response.code)
+	def test_valid_creds_pass(self):
+		response = self.fetch("/endpoints", method="GET", headers={"Authorization": "Basic {}".format(base64.b64encode("username:password".encode("utf-8")).decode("utf-8"))})
+		self.assertEqual(200, response.code)
