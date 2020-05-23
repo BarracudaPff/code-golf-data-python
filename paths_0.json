@@ -1,1 +1,8 @@
-{"evaluationRoots": ["models/research/syntaxnet/syntaxnet/util", "djangocms_blog", "src/carver/htm", "graphql/utils"]}
+{
+  "evaluationRoots": [
+    "models/research/syntaxnet/syntaxnet/util/check.py",
+    "djangocms_blog/search_indexes.py",
+    "src/carver/htm/segment.py",
+    "graphql/utils/undefined.py"
+  ]
+}
