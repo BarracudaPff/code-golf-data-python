@@ -1,3 +1,5 @@
+# sudo apt-get install libsnappy-dev
+# Some libraries are disabled for correct easy evaluation
 chardet
 requests
 absl
@@ -12,29 +14,29 @@ behave
 bencodepy
 blinker
 block
-blocks
-boa
+# blocks
+# boa
 boto3
 botocore
-bpy
+# bpy
 chalice
 circuit
 clients
 clint
 color
-const
+# const
 contextlib2
 coroutines
-cronq
-DataUtils
-de
-devices
+# cronq
+# DataUtils
+# de
+# devices
 dill
 Django
-django_evolution
+# django_evolution
 djangorestframework
-djblets
-electrum
+# djblets
+# electrum
 elfesteem
 estimators
 evaluate
@@ -42,14 +44,14 @@ expressions
 feedparser
 flask_testing
 funcy
-gateway
+# gateway
 GitPython
 gpiozero
 GPy
-grpc
+# grpc
 helper
-horovod
-idc
+# horovod
+# idc
 ipdb
 jaqs
 Jinja2
@@ -78,12 +80,12 @@ nose
 numpy
 overrides
 pandas
-Picture
+# Picture
 pilkit
 Pillow
 Pixel
 plistutils
-plyvel
+# plyvel
 promise
 protobuf
 psutil
@@ -93,7 +95,7 @@ pyblake2
 PyJWT
 pyramid
 pysc2
-PySide
+# PySide
 pytest
 pytz
 PyYAML
@@ -101,7 +103,7 @@ qiskit
 responses
 scipy
 six
-skimage
+# skimage
 South
 stretch
 sympy
@@ -113,10 +115,10 @@ testutils
 toolz
 torch
 tornado
-ujson
+# ujson
 unittest2
 viz
-walk
+# walk
 websocket_client
 Window
 wsstat
