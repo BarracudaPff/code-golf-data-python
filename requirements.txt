@@ -2,7 +2,7 @@
 # Some libraries are disabled for correct easy evaluation
 chardet
 requests
-absl
+# absl
 aiohttp
 allennlp
 ansible
@@ -99,7 +99,7 @@ pysc2
 pytest
 pytz
 PyYAML
-qiskit
+# qiskit
 responses
 scipy
 six
@@ -107,7 +107,7 @@ six
 South
 stretch
 sympy
-table
+# table
 tensorflow
 tensorflow_hub
 test_helpers
